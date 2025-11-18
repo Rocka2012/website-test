@@ -21,7 +21,7 @@ let object;
 let controls;
 
 //Set which object to render
-let objToRender = 'kleierbal';
+let objToRender = 'kleierbalmodel';
 
 //Instantiate a loader for the .gltf file
 const loader = new GLTFLoader();
@@ -52,7 +52,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
-camera.position.z = objToRender === "kleierbal" ? 25 : 500;
+camera.position.z = objToRender === "kleierbalmodel" ? 25 : 500;
 
 //Add lights to the scene, so we can actually see the 3D model
 const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
@@ -60,11 +60,11 @@ topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "kleierbal" ? 5 : 1);
+const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "kleierbalmodel" ? 5 : 1);
 scene.add(ambientLight);
 
 //This adds controls to the camera, so we can rotate / zoom it with the mouse
-if (objToRender === "kleierbal") {
+if (objToRender === "kleierbalmodel") {
   controls = new OrbitControls(camera, renderer.domElement);
 }
 
@@ -74,7 +74,7 @@ function animate() {
   //Here we could add some code to update the scene, adding some automatic movement
 
   //Make the eye move
-  if (object && objToRender === "kleierbal") {
+  if (object && objToRender === "kleierbalmodel") {
     //I've played with the constants here until it looked good 
     object.rotation.y = -3 + mouseX / window.innerWidth * 3;
     object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
